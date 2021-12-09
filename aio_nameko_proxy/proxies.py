@@ -51,7 +51,7 @@ class AIOClusterRpcProxy(object):
 
         self.url = URL(amqp_uri)
 
-        self.serializer, self.accept = serialization_setup(_config)
+        self.serializer, self.accept = config["serializer"], config["ACCEPT"]
 
         self._exchange_name = _config.pop(RPC_EXCHANGE_CONFIG_KEY, RPC_EXCHANGE_NAME)
 
@@ -80,6 +80,7 @@ class AIOClusterRpcProxy(object):
             port=self.url.port,
             login=self.url.user,
             password=self.url.password,
+            virtualhost=self.url.path[1:],
             ssl=ssl_,
             ssl_options=self.ssl_options,
             loop=self.loop,
