@@ -35,5 +35,5 @@ setup(
         "aiotask-context>=0.6.1",
         "nameko>=2.12.0"
     ],
-    python_requires==3.7.16",
+    python_requires=="3.7.16",
 )
